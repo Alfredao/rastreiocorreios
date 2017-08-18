@@ -6,7 +6,7 @@
     <title>Rastrear encomendas dos correios em tempo real</title>
 
     <script src="https://code.angularjs.org/1.3.15/angular.js"></script>
-    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
 
     <script>
     let app = angular.module('myApp', []);
@@ -15,7 +15,7 @@
     let codigo = params.get('codigo');
 
     angular.module('myApp').controller('myController', ['$scope', '$http', '$interval', ($scope, $http, $interval) => {      
-        $scope.reload = () => $http.get(`http://api.postmon.com.br/v1/rastreio/ect/${codigo}`).success((data) => $scope.correios = data);
+        $scope.reload = () => $http.get(`https://api.postmon.com.br/v1/rastreio/ect/${codigo}`).success((data) => $scope.correios = data);
         $scope.reload();
         $interval($scope.reload, 5000);        
     }]);
