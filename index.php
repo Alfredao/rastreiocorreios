@@ -18,7 +18,9 @@
         $scope.reload = () => $http.get(`https://api.postmon.com.br/v1/rastreio/ect/${codigo}`, { 
             cache : false,
             headers : {
-                'Content-Type' : 'application/json; charset=UTF-8'
+                'Content-Type'   : 'application/json; charset=UTF-8',
+                'Accept'         : 'application/json; charset=utf-8',
+                'Accept-Charset' : 'charset=utf-8'                
             }
         }).success((data) => $scope.correios = data);
         
