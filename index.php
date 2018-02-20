@@ -15,7 +15,13 @@
     let codigo = params.get('codigo');
 
     angular.module('myApp').controller('myController', ['$scope', '$http', '$interval', ($scope, $http, $interval) => {      
-        $scope.reload = () => $http.get(`https://api.postmon.com.br/v1/rastreio/ect/${codigo}`, { cache : false }).success((data) => $scope.correios = data);
+        $scope.reload = () => $http.get(`https://api.postmon.com.br/v1/rastreio/ect/${codigo}`, { 
+            cache : false,
+            headers : {
+                'Content-Type' : 'application/json; charset=UTF-8'
+            }
+        }).success((data) => $scope.correios = data);
+        
         $scope.reload();
         $interval($scope.reload, 5000);        
     }]);
